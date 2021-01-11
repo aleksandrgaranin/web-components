@@ -9,14 +9,19 @@
       div {
         border: 2px solid orange;
       }
+      .highlight {
+        background-color: orange;
+      }
     </style>
     <title>Document</title>
   </head>
   <body>
     <p>
-      <uc-tooltip text="Web Component is a set of standards"
-        >Is it working</uc-tooltip
-      >
+      <uc-tooltip text="Web Component is a set of standards">
+        <span class="highlight">
+          Web Components
+        </span>
+      </uc-tooltip>
     </p>
     <uc-tooltip>Here we go</uc-tooltip><br />
     <uc-tooltip></uc-tooltip><br />
