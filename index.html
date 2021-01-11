@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./tooltip.js"></script>
+    <script src="./confirm-link.js"></script>
     <style>
       div {
         border: 2px solid orange;
@@ -18,8 +19,11 @@
       >
     </p>
     <uc-tooltip>Here we go</uc-tooltip><br />
-    <uc-tooltip></uc-tooltip><br>
-    <a href="">Google</a>
+    <uc-tooltip></uc-tooltip><br />
+    <br />
+    <a is="uc-confirm-link" href="https://www.google.com">Google</a>
+    <br />
+    <br />
     <div>This does not get the web component styles!</div>
   </body>
 </html>
