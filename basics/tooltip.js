@@ -65,6 +65,20 @@ class Tooltip extends HTMLElement {
     // console.log('It is working');
   }
 
+  attributeChangedCallback(name, oldValue, newVAlue) {
+    console.log(name, oldValue, newVAlue)
+    if (oldValue === newVAlue) {
+      return;
+    }
+    if (name === 'text') {
+      this._tooltipText = newVAlue
+    }
+  }
+
+  static get observedAttributes() {
+    return ['text'] //returning array with all attributes what we want to listen
+  }
+
   _showTooltip() {
     this._tooltipContainer = document.createElement('div');
     this._tooltipContainer.textContent = this._tooltipText;
