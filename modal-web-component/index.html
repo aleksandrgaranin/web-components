@@ -28,11 +28,19 @@
     const button = document.querySelector('button');
     button.addEventListener('click', () => {
       const modal = document.querySelector('us-modal');
+
+      modal.addEventListener('confirm', () => {
+        console.log('Condirmed...');
+      });
+
+      modal.addEventListener('cancel', ()=>{
+        console.log('Cancelled...')
+      });
       // model.setAttribute('opened', '');
-      if(!modal.isOpen) {
+      if (!modal.isOpen) {
         modal.open();
-        console.log('Openning...')
+        console.log('Openning...');
       }
-    })
+    });
   </script>
 </html>

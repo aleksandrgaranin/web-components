@@ -71,12 +71,22 @@ class Modal extends HTMLElement {
           <slot></slot>
         </section>
         <section id="actions">
-          <button>Cansel</button>
-          <button>Okey</button>
+          <button id="cancel-btn">Cansel</button>
+          <button id="confirm-btn">Okey</button>
         </section>
 
       </div>
     `;
+    const slots = this.shadowRoot.querySelectorAll('slot');
+    slots[1].addEventListener('slotchange', event => {
+      console.dir(slots[1]);
+    });
+    const cancelButton = this.shadowRoot.querySelector('#cancel-btn');
+    const confirmButton = this.shadowRoot.querySelector('#confirm-btn');
+
+    cancelButton.addEventListener('click', this._cancel.bind(this))
+    confirmButton.addEventListener('click', this._confirm.bind(this))
+
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
@@ -95,6 +105,27 @@ class Modal extends HTMLElement {
   open() {
     this.setAttribute('opened', '');
     this.isOpen = true;
+  }
+
+  _hide() {
+    if (this.hasAttribute('opened')) {
+      this.removeAttribute('opened');
+    }
+    this.isOpen = false;
+  }
+
+  _cancel(event) {
+    this._hide();
+    const cancelEvent = new Event('cancel', { bubbles: true, composed: true });
+    event.target.dispatchEvent(cancelEvent)
+  }
+
+  _confirm() {
+    this._hide();
+    // const cancelEvent = new Event('confirm', { bubbles: true, composed: true });
+    // event.target.dispatchEvent(cancelEvent)
+    const confirmEvent = new Event('confirm');
+    this.dispatchEvent(confirmEvent)
   }
 }
 
