@@ -18,6 +18,7 @@
   </head>
   <body>
     <us-modal>
+      <h1 slot="title">Please confirm</h1>
       <p>Whith your conformation you are agree to pay full amount!</p>
     </us-modal>
     <p>Please confirm your choice.</p>
@@ -26,8 +27,12 @@
   <script>
     const button = document.querySelector('button');
     button.addEventListener('click', () => {
-      const model = document.querySelector('us-modal');
-      model.setAttribute('opened', '');
+      const modal = document.querySelector('us-modal');
+      // model.setAttribute('opened', '');
+      if(!modal.isOpen) {
+        modal.open();
+        console.log('Openning...')
+      }
     })
   </script>
 </html>
