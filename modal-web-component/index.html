@@ -23,4 +23,11 @@
     <p>Please confirm your choice.</p>
     <button>Show Details & Confirm</button>
   </body>
+  <script>
+    const button = document.querySelector('button');
+    button.addEventListener('click', () => {
+      const model = document.querySelector('us-modal');
+      model.setAttribute('opened', '');
+    })
+  </script>
 </html>
